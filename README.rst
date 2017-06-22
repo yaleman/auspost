@@ -1,8 +1,12 @@
-# Australia Post Suburb Data Grabber
+Australia Post data grabber
+===========================
 
 A quick module for searching and pulling suburb data from the Australia Post website.
 
-## Usage
+Usage
+-----
+
+Example below, it's pretty simple and yields namedtuples:
 
     import austpost
     for data in austpost.search_postcode("Sydney"):
@@ -23,6 +27,7 @@ A quick module for searching and pulling suburb data from the Australia Post web
     AusPostData(postcode='2006', suburb='THE UNIVERSITY OF SYDNEY', state='NSW')
     AusPostData(postcode='1466', suburb='UNSW SYDNEY', state='NSW')
 
-## Errors
+Errors
+------
 
 It'll raise a RunTimeError if something goes wrong with fetching the data
