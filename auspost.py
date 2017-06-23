@@ -34,7 +34,7 @@ def search_postcode(searchterm : str):
     try:
         browser.open(searchurl)
     except:
-        raise RuntimeError("Failed to open the url '{}'".format(searchurl))
+        raise ConnectionError("Failed to open the url '{}'".format(searchurl))
     # get the page contents
     page = browser.get_current_page()
 
