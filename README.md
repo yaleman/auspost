@@ -1,10 +1,8 @@
-Australia Post data grabber
-===========================
+# Australia Post data grabber
 
 A quick module for searching and pulling suburb data from the Australia Post website.
 
-Usage
------
+# Usage
 
 Example below, it's pretty simple and yields namedtuples:
 
@@ -27,12 +25,10 @@ Example below, it's pretty simple and yields namedtuples:
     AusPostData(postcode='2006', suburb='THE UNIVERSITY OF SYDNEY', state='NSW')
     AusPostData(postcode='1466', suburb='UNSW SYDNEY', state='NSW')
 
-Errors
-------
+# Errors
 
 It'll raise a RunTimeError if something goes wrong with fetching the data
 
-Changelog
----------
+# Changelog
 
 2019-11-16 - Changed from a namedtuple response to a dict because... I don't even know why I was returning them at the time.
