@@ -10,18 +10,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 """
 
 try:
-    from collections import namedtuple
     from mechanicalsoup import StatefulBrowser
 except ImportError as e:
     importmessage = "Failure while loading auspost module's dependencies: {}".format(e)
     raise ImportError(importmessage)
 
-AusPostData = namedtuple('AusPostData', ['postcode', 'suburb', 'state'])
 
 def search_postcode(searchterm : str):
     """ this does a search against the Australia Post site to 
-    grab postcode/suburb/state data and returns a namedtuple 
-    AusPostData(postcode=int, suburb=str, state=str)
+    grab postcode/suburb/state data
+    
+    params.searchterm: the search string
+    type.searchterm: str
+
+    :returns: postcode=int, suburb=str, state=str
+    :rtype: dict
+
     """
     browser = StatefulBrowser(soup_config={'features': 'lxml'})
     # Uncomment for a more verbose output:
@@ -33,19 +37,13 @@ def search_postcode(searchterm : str):
     # grab the page
     try:
         browser.open(searchurl)
-    except:
-        raise ConnectionError("Failed to open the url '{}'".format(searchurl))
-    # get the page contents
-    page = browser.get_current_page()
-
-    # find the ol
-    ols = page.find_all('ol')
-    # find the lis within the ol
-    lis = ols[0].find_all('li')
-    # pull out the data
-    for li in lis:
-        # this is in the li tag
-        if 'id="result' in str(li):
+        # get the page contents
+        page = browser.get_current_page()
+        # find the lis within the ol
+        lis = page.find_all('ol')[0].find_all('li')
+        # pull out the data
+        data_lis =[ li for li in lis if 'id="result' in str(li) ]
+        for li in data_lis:
             # this is the data found in June 2017
             #<span class="suburb-map-postcode">POSTCODE</span>
             #<h2>SUBURB, STATE</h2>
@@ -55,6 +53,12 @@ def search_postcode(searchterm : str):
                 secondfield = li.find_all('h2')
                 if secondfield:
                     suburb, state = secondfield[0].contents[0].split(",")
-                    suburb, state = suburb.strip(), state.strip()
-                    if postcode and state and suburb:
-                        yield AusPostData(postcode=int(postcode), state=state, suburb=suburb)
+                    if postcode and state.strip() and suburb.strip():
+                        yield {
+                            'postcode' : int(postcode),
+                            'state' : state.strip(),
+                            'suburb' : suburb.strip(),
+                        }
+    except:
+        raise ConnectionError("Failed to open the url '{}'".format(searchurl))
+
