@@ -5,3 +5,4 @@ dist/
 *.egg-info/
 .scannerwork/
 .coverage-reports/
+.vscode

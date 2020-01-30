@@ -4,7 +4,7 @@ mkdir -p coverage-reports
 echo "######################################################"
 echo "                Running tests"
 echo "######################################################"
-pipenv run python3 -Wa test.py
+pipenv run pytest test.py
 
 echo "######################################################"
 echo "                Running coverage"

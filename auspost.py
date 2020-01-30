@@ -32,7 +32,7 @@ def search_postcode(searchterm : str):
     # browser.set_verbose(2)
 
     # build the URL for search
-    searchurl = "http://auspost.com.au/postcode/{}".format(searchterm.replace(' ', '%20'))
+    searchurl = "https://auspost.com.au/postcode/{}".format(searchterm.replace(' ', '%20'))
 
     # grab the page
     try:
