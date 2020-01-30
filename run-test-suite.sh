@@ -15,7 +15,6 @@ pipenv run coverage xml -i -o .coverage-reports/coverage-registry.xml
 echo "Cleaning up"
 pipenv run coverage erase
 
-
 echo "######################################################"
 echo "               Running sonarqube analysis"
 echo "######################################################"
