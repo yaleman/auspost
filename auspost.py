@@ -69,5 +69,5 @@ def search_postcode(searchterm: str):
                             'state' : state.strip(),
                             'suburb' : suburb.strip(),
                         }
-    except:
+    except Exception as error:
         raise ConnectionError("Failed to open the url '{}'".format(searchurl))
