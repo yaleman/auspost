@@ -6,8 +6,8 @@ A quick module for searching and pulling suburb data from the Australia Post web
 
 Example below, it's pretty simple and yields namedtuples:
 
-    import austpost
-    for data in austpost.search_postcode("Sydney"):
+    import auspost
+    for data in auspost.search_postcode("Sydney"):
          print(data)
     AusPostData(postcode='2055', suburb='NORTH SYDNEY', state='NSW')
     AusPostData(postcode='2059', suburb='NORTH SYDNEY', state='NSW')
@@ -32,3 +32,4 @@ It'll raise a RunTimeError if something goes wrong with fetching the data
 # Changelog
 
 2019-11-16 - Changed from a namedtuple response to a dict because... I don't even know why I was returning them at the time.
+2021-01-23 - Fixed example code typo
