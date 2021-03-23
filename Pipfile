@@ -13,6 +13,3 @@ twine = "*"
 lxml = "*"
 twine = "*"
 MechanicalSoup = "*"
-
-[requires]
-python_version = "3.7"
