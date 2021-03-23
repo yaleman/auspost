@@ -31,5 +31,5 @@ It'll raise a RunTimeError if something goes wrong with fetching the data
 
 # Changelog
 
-2019-11-16 - Changed from a namedtuple response to a dict because... I don't even know why I was returning them at the time.
-2021-01-23 - Fixed example code typo
+* 2019-11-16 - Changed from a namedtuple response to a dict because... I don't even know why I was returning them at the time.
+* 2021-01-23 - Fixed example code typo
