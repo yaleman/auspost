@@ -11,5 +11,4 @@ twine = "*"
 
 [packages]
 lxml = "*"
-twine = "*"
 MechanicalSoup = "*"
