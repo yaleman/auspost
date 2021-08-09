@@ -16,18 +16,22 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
+      # - name: Set up Python 3
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.8
+      # - name: Install dependencies
+      #   run: python3 -m pip install --upgrade pip;
+      #     python3 -m pip install flake8 pytest pylint;
+      #     python3 -m pip install -r requirements.txt;
+
+      - name: Python Pylin GitHub Action
+        uses: fylein/python-pytest-github-action@v1
         with:
-          python-version: 3.8
-      - name: Install dependencies
-        run: python3 -m pip install --upgrade pip;
-          python3 -m pip install flake8 pytest pylint;
-          python3 -m pip install -r requirements.txt;
+          args: pip3 install -r requirements.txt && pytest test.py
 
-      - name: run pytest
-        run: python3 -m pytest auspost.py
-
-      - name: run pylint
-        run: python3 -m pylint auspost.py
+      - name: Python Pylin GitHub Action
+        uses: fylein/python-pylint-github-action@v1
+        with:
+          args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc ./
 
