@@ -19,11 +19,14 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
+import sys
+
 try:
     from mechanicalsoup import StatefulBrowser
 except ImportError as error_message:
     IMPORTMESSAGE = "Failure while loading auspost module's dependencies: {}".format(error_message)
-    raise ImportError(IMPORTMESSAGE)
+    print(IMPORTMESSAGE, file=sys.stderr)
+    sys.exit(1)
 
 
 def search_postcode(searchterm: str):
@@ -70,4 +73,4 @@ def search_postcode(searchterm: str):
                             'suburb' : suburb.strip(),
                         }
     except Exception:
-        raise ConnectionError("Failed to open the url '{}'".format(searchurl))
+        raise ConnectionError from ConnectionError("Failed to open the url '{}'".format(searchurl))

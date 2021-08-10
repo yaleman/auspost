@@ -25,13 +25,13 @@ jobs:
       #     python3 -m pip install flake8 pytest pylint;
       #     python3 -m pip install -r requirements.txt;
 
-      - name: Python Pylin GitHub Action
+      - name: Running pytest
         uses: fylein/python-pytest-github-action@v2
         with:
-          args: pip3 install -r requirements.txt && pytest test.py
+          args: python3 -m pip install -r requirements.txt && ls -la && python3 -m pytest test.py
 
-      - name: Python Pylin GitHub Action
+      - name: Running pylint
         uses: fylein/python-pylint-github-action@v4
         with:
-          args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc ./
+          args: python3 -m pip install -r requirements.txt && python3 -m pylint --rcfile=.pylintrc auspost.py
 
