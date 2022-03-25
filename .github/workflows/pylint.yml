@@ -20,18 +20,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.7"
-      # - name: Install dependencies
-      #   run: python3 -m pip install --upgrade pip;
-      #     python3 -m pip install flake8 pytest pylint;
-      #     python3 -m pip install -r requirements.txt;
-
-      - name: Running pytest
-        uses: fylein/python-pytest-github-action@v2
-        with:
-          args: |
-            python -m pip install .
-            python -m pip install pytest
-            python -m pytest
 
       - name: Running pylint
         uses: fylein/python-pylint-github-action@v4

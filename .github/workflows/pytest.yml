@@ -1,0 +1,30 @@
+name: test the things
+
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
+
+      - name: Running pytest
+        uses: fylein/python-pytest-github-action@v2
+        with:
+          args: |
+            python -m pip install .
+            python -m pip install pytest
+            python -m pytest
