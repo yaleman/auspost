@@ -24,8 +24,10 @@ import sys
 try:
     from mechanicalsoup import StatefulBrowser
 except ImportError as error_message:
-    IMPORTMESSAGE = "Failure while loading auspost module's dependencies: {}".format(error_message)
-    print(IMPORTMESSAGE, file=sys.stderr)
+    print(
+        f"Failure while loading auspost module's dependencies: {error_message}",
+        file=sys.stderr,
+        )
     sys.exit(1)
 
 
@@ -45,7 +47,7 @@ def search_postcode(searchterm: str):
     # browser.set_verbose(2)
 
     # build the URL for search
-    searchurl = "https://auspost.com.au/postcode/{}".format(searchterm.replace(' ', '%20'))
+    searchurl = f"https://auspost.com.au/postcode/{searchterm.replace(' ', '%20')}"
 
     # grab the page
     try:
@@ -73,4 +75,4 @@ def search_postcode(searchterm: str):
                             'suburb' : suburb.strip(),
                         }
     except Exception:
-        raise ConnectionError from ConnectionError("Failed to open the url '{}'".format(searchurl))
+        raise ConnectionError from ConnectionError(f"Failed to open the url '{searchurl}'")
