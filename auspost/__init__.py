@@ -21,14 +21,7 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 
 import sys
 
-try:
-    from mechanicalsoup import StatefulBrowser
-except ImportError as error_message:
-    print(
-        f"Failure while loading auspost module's dependencies: {error_message}",
-        file=sys.stderr,
-        )
-    sys.exit(1)
+from mechanicalsoup import StatefulBrowser # type: ignore
 
 
 def search_postcode(searchterm: str):
