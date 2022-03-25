@@ -28,10 +28,14 @@ jobs:
       - name: Running pytest
         uses: fylein/python-pytest-github-action@v2
         with:
-          args: python3 -m pip install -r requirements.txt && ls -la && python3 -m pytest test.py
+          args: |
+            python -m pip install -r requirements.txt
+            python -m pytest
 
       - name: Running pylint
         uses: fylein/python-pylint-github-action@v4
         with:
-          args: python3 -m pip install -r requirements.txt && python3 -m pylint --rcfile=.pylintrc auspost.py
+          args: |
+            python -m pip install -r requirements.txt
+            python -m pylint --rcfile=.pylintrc auspost.py
 
