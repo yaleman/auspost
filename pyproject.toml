@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "auspost"
-version = "0.0.9"
+version = "0.0.10"
 description = "A quick module for searching and pulling suburb data from the Australia Post website."
 authors = ["James Hodgkinson <james@terminaloutcomes.com>"]
 license = "MIT"
