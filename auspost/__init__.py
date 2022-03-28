@@ -19,12 +19,20 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import sys
+
+from sre_parse import State
+from typing import Generator, TypedDict
 
 from mechanicalsoup import StatefulBrowser # type: ignore
 
 
-def search_postcode(searchterm: str):
+class PostcodeResult(TypedDict):
+    """typed dict of results from `search_postcode`"""
+    postcode: int
+    state: str
+    suburb: str
+
+def search_postcode(searchterm: str) -> Generator[PostcodeResult, None, None]:
     """ this does a search against the Australia Post site to
     grab postcode/suburb/state data
 
