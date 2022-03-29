@@ -1,31 +1,25 @@
-name: mypy
+name: Run mypy
 
-on:
+"on":
   push:
     branches:
       - main  # Set a branch to deploy
   pull_request:
 
 jobs:
-  deploy:
+  mypy:
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-      - name: Set up Python 3
+      - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-
-      - name: Running pytest
-        uses: fylein/python-pytest-github-action@v2
-        with:
-          args: |
-            python -m pip install .
-            python -m pip install mypy
-            mypy --strict auspost
-
+      - name: Running mypy
+        run: |
+          python --version
+          python -m pip install --quiet --no-cache-dir --upgrade poetry
+          poetry install
+          poetry run mypy $(basename $(pwd)) test*.py
