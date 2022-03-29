@@ -27,4 +27,4 @@ jobs:
           args: |
             python -m pip install .
             python -m pip install pylint
-            python -m pylint --rcfile=.pylintrc auspost.py
+            python -m pylint auspost

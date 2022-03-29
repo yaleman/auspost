@@ -27,4 +27,5 @@ jobs:
           args: |
             python -m pip install .
             python -m pip install mypy
-            mypy --strict $(basename $(pwd))
+            mypy --strict auspost
+
