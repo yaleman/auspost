@@ -20,7 +20,6 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 
-from sre_parse import State
 from typing import Generator, TypedDict
 
 from mechanicalsoup import StatefulBrowser # type: ignore
