@@ -33,4 +33,5 @@ It'll raise a RunTimeError if something goes wrong with fetching the data
 
 * 2019-11-16 - Changed from a namedtuple response to a dict because... I don't even know why I was returning them at the time.
 * 2021-01-23 - Fixed example code typo
-* 2022-03-28 - Adding typing, bumpted to 0.0.10
+* 2022-03-28 - Adding typing, bumped to 0.0.10
+* 2022-06-04 - v0.0.11 - Added more typing, more testing.

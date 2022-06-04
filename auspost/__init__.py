@@ -20,8 +20,8 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 
-from typing import Generator, TypedDict
-
+from typing import Generator, List, TypedDict, Optional
+import requests
 from mechanicalsoup import StatefulBrowser # type: ignore
 
 
@@ -31,7 +31,10 @@ class PostcodeResult(TypedDict):
     state: str
     suburb: str
 
-def search_postcode(searchterm: str) -> Generator[PostcodeResult, None, None]:
+def search_postcode(
+    searchterm: str,
+    session: Optional[requests.Session]=None,
+    ) -> Generator[PostcodeResult, None, None]:
     """ this does a search against the Australia Post site to
     grab postcode/suburb/state data
 
@@ -42,13 +45,19 @@ def search_postcode(searchterm: str) -> Generator[PostcodeResult, None, None]:
     :rtype: dict
 
     """
-    browser = StatefulBrowser(soup_config={'features': 'lxml'})
+    if session is None:
+        session = requests.Session()
+
+    browser = StatefulBrowser(
+        session=session,
+        soup_config={'features': 'lxml'},
+        )
     # Uncomment for a more verbose output:
     # browser.set_verbose(2)
 
     # build the URL for search
     searchurl = f"https://auspost.com.au/postcode/{searchterm.replace(' ', '%20')}"
-
+    print(searchurl)
     # grab the page
     try:
         browser.open(searchurl)
