@@ -38,7 +38,7 @@ lxml = "^4.8.0"
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
 pylint = "^2.15.0"
-black = "^22.6.0"
+black = "^22.8.0"
 mypy = "^0.971"
 coverage = "^6.4.4"
 requests-mock = "^1.10.0"
