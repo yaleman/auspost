@@ -186,8 +186,8 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "mechanicalsoup"
-version = "1.1.0"
+name = "MechanicalSoup"
+version = "1.2.0"
 description = "A Python library for automating interaction with websites"
 category = "main"
 optional = false
@@ -685,9 +685,9 @@ mccabe = [
     {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
     {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
 ]
-mechanicalsoup = [
-    {file = "MechanicalSoup-1.1.0-py3-none-any.whl", hash = "sha256:0685465c449018f8bce9055b74cf60fbec2ada8391c03aa179586edc6b5a5ee8"},
-    {file = "MechanicalSoup-1.1.0.tar.gz", hash = "sha256:2be8ad9b7571990fce16d0f99a741779921510eb133d3a4dfdeccb2ff2cd00e5"},
+MechanicalSoup = [
+    {file = "MechanicalSoup-1.2.0-py3-none-any.whl", hash = "sha256:e6161d5c715a7bc6fbdb2f1550c9df98e339ee67fed825d695a89da7ba461cac"},
+    {file = "MechanicalSoup-1.2.0.tar.gz", hash = "sha256:f8593ab4474a82ceb6b7ddb3e35a8c69f8455a06adafd2b5258c1d852158d760"},
 ]
 mypy = [
     {file = "mypy-0.971-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:f2899a3cbd394da157194f913a931edfd4be5f274a88041c9dc2d9cdcb1c315c"},
