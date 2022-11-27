@@ -6,3 +6,4 @@ dist/
 .scannerwork/
 .coverage-reports/
 .vscode
+poetry.lock
