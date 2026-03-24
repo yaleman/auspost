@@ -1,25 +1,16 @@
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
 
 [project]
-authors = [
-    {name = "James Hodgkinson", email = "james@terminaloutcomes.com"},
-]
+authors = [{ name = "James Hodgkinson", email = "james@terminaloutcomes.com" }]
 name = "auspost"
-version = "0.1.0"
+version = "0.2.0"
 description = "A quick module for searching and pulling suburb data from the Australia Post website."
 readme = "README.md"
-license = {text = "MIT"}
-requires-python = ">=3.8,<4.0"
-keywords = [
-    "australia post",
-    "suburb",
-    "postcode",
-]
+license = { text = "MIT" }
+requires-python = ">=3.12,<4.0"
+keywords = ["australia post", "suburb", "postcode"]
 dependencies = [
-    "MechanicalSoup<2.0.0,>=1.1.0",
-    "lxml<7.0,>=4.8",
+    "MechanicalSoup>=1.1.0", # toml-reflow avoidance
+    "lxml>=4.8",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -29,16 +20,20 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 
 [dependency-groups]
 dev = [
-    "mypy>=1.14.1",
-    "pytest>=8.0.0,<9.0.0",
-    "requests-mock<2.0.0,>=1.10.0",
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "requests-mock>=1.10.0",
     "ruff>=0.15.7",
     "ty>=0.0.24",
-    "types-requests<3.0.0,>=2.28.11",
+    "types-requests>=2.32.4.20260107",
 ]
 
 [tool.pytest.ini_options]
@@ -46,3 +41,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 200
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
