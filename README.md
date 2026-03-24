@@ -2,6 +2,17 @@
 
 A quick module for searching and pulling suburb data from the Australia Post website.
 
+# Development
+
+This repository now uses `uv` for package management.
+
+```bash
+uv sync --dev
+uv run ruff check .
+uv run ty check
+uv run pytest
+```
+
 # Usage
 
 Example below, it's pretty simple and yields namedtuples:
@@ -35,3 +46,4 @@ It'll raise a RunTimeError if something goes wrong with fetching the data
 * 2021-01-23 - Fixed example code typo
 * 2022-03-28 - Adding typing, bumped to 0.0.10
 * 2022-06-04 - v0.0.11 - Added more typing, more testing.
+* 2026-03-24 - v0.1.0 - Switched package management to uv and replaced validation with ruff, ty, and pytest.

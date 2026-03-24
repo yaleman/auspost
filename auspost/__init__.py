@@ -20,9 +20,9 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 
-from typing import Generator, List, TypedDict, Optional
+from typing import Generator, Optional, TypedDict
 import requests
-from mechanicalsoup import StatefulBrowser # type: ignore
+from mechanicalsoup import StatefulBrowser
 
 
 class PostcodeResult(TypedDict):
