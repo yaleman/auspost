@@ -16,7 +16,7 @@ jobs:
       id-token: write
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Build
         run: |
           python -m pip install --quiet --no-cache-dir --upgrade uv
@@ -38,7 +38,7 @@ jobs:
       id-token: write
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Build
         run: |
           python -m pip install --quiet --no-cache-dir --upgrade uv
