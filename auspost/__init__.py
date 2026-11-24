@@ -1,4 +1,3 @@
-
 """
 Copyright 2017 James Hodgkinson
 
@@ -19,23 +18,26 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
+from collections.abc import Generator
+from typing import TypedDict
 
-from typing import Generator, Optional, TypedDict
 import requests
 from mechanicalsoup import StatefulBrowser
 
 
 class PostcodeResult(TypedDict):
     """typed dict of results from `search_postcode`"""
+
     postcode: int
     state: str
     suburb: str
 
+
 def search_postcode(
     searchterm: str,
-    session: Optional[requests.Session]=None,
-    ) -> Generator[PostcodeResult, None, None]:
-    """ this does a search against the Australia Post site to
+    session: requests.Session | None = None,
+) -> Generator[PostcodeResult, None, None]:
+    """this does a search against the Australia Post site to
     grab postcode/suburb/state data
 
     params.searchterm: the search string
@@ -50,8 +52,8 @@ def search_postcode(
 
     browser = StatefulBrowser(
         session=session,
-        soup_config={'features': 'lxml'},
-        )
+        soup_config={"features": "lxml"},
+    )
     # Uncomment for a more verbose output:
     # browser.set_verbose(2)
 
@@ -64,24 +66,24 @@ def search_postcode(
         # get the page contents
         page = browser.get_current_page()
         # find the lis within the ol
-        lis = page.find_all('ol')[0].find_all('li')
+        lis = page.find_all("ol")[0].find_all("li")
         # pull out the data
         data_lis = [li for li in lis if 'id="result' in str(li)]
         for list_element in data_lis:
             # this is the data found in June 2017
-            #<span class="suburb-map-postcode">POSTCODE</span>
-            #<h2>SUBURB, STATE</h2>
-            postcode = list_element.find_all('span')
+            # <span class="suburb-map-postcode">POSTCODE</span>
+            # <h2>SUBURB, STATE</h2>
+            postcode = list_element.find_all("span")
             if postcode:
                 postcode = postcode[0].contents[0]
-                secondfield = list_element.find_all('h2')
+                secondfield = list_element.find_all("h2")
                 if secondfield:
                     suburb, state = secondfield[0].contents[0].split(",")
                     if postcode and state.strip() and suburb.strip():
                         yield {
-                            'postcode' : int(postcode),
-                            'state' : state.strip(),
-                            'suburb' : suburb.strip(),
+                            "postcode": int(postcode),
+                            "state": state.strip(),
+                            "suburb": suburb.strip(),
                         }
-    except Exception:
+    except Exception:  # noqa: BLE001
         raise ConnectionError from ConnectionError(f"Failed to open the url '{searchurl}'")

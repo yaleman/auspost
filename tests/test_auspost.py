@@ -2,6 +2,7 @@
 
 from auspost import search_postcode
 
+
 def test_search_sydney_suburb() -> None:
     """ tests a basic sydney search
         for data in search_postcode("Sydney"):
